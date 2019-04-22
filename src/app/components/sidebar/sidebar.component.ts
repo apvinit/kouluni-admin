@@ -2,20 +2,50 @@ import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+  { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/admission', title: 'Admission', icon: 'people', class: '' },
+  {
+    path: '/attendance',
+    title: 'Attendance',
+    icon: 'date_range',
+    class: ''
+  },
+  {
+    path: '/timetable',
+    title: 'Timetable',
+    icon: 'watch_later',
+    class: ''
+  },
+  {
+    path: '/notice',
+    title: 'Notice',
+    icon: 'notifications',
+    class: ''
+  },
+  {
+    path: '/events',
+    title: 'Events',
+    icon: 'events',
+    class: ''
+  },
+  {
+    path: '/fees',
+    title: 'Fee Collection',
+    icon: 'money',
+    class: ''
+  },
+  {
+    path: '/upgrade',
+    title: 'Upgrade to PRO',
+    icon: 'unarchive',
+    class: 'active-pro'
+  }
 ];
 
 @Component({
@@ -26,15 +56,15 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
   isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+    if ($(window).width() > 991) {
+      return false;
+    }
+    return true;
+  }
 }
