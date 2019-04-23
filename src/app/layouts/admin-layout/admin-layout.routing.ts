@@ -15,5 +15,9 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: 'notice',
     loadChildren: '../../notice/notice.module#NoticeModule'
+  },
+  {
+    path: 'attendance',
+    loadChildren: '../../attendance/attendance.module#AttendanceModule'
   }
 ];
