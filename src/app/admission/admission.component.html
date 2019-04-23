@@ -1,5 +1,103 @@
 <div class="main-content">
   <div class="container-fluid">
-    hello from admission component
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Admission</h4>
+            <p class="card-category">Add a new student</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  formControlName="name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Father's Name"
+                  formControlName="fathername"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Mother's Name"
+                  formControlName="mothername"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="date"
+                  placeholder="Date of Birth"
+                  formControlName="dob"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <select formControlName="class" class="form-control" required>
+                  <option>Choose a Class</option>
+                  <option value="nur">Nursery</option>
+                  <option value="kg1">KG - 1</option>
+                  <option value="kg2">KG - 2</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                  <option value="4">Four</option>
+                  <option value="5">Five</option>
+                  <option value="6">Six</option>
+                  <option value="7">Seven</option>
+                  <option value="8">Eight</option>
+                  <option value="9">Nine</option>
+                  <option value="10">Ten</option>
+                  <option value="11">Eleven</option>
+                  <option value="12">Twelve</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" required>
+                  <option>Choose a Section</option>
+                  <option value="a">Section A</option>
+                  <option value="b">Section B</option>
+                  <option value="c">Section C</option>
+                  <option value="d">Section D</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Contact No."
+                  formControlName="contact"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  placeholder="Address"
+                  formControlName="address"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <button class="btn btn-primary">Add</button>
+              <button class="btn">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
