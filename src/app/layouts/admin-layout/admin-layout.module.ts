@@ -24,8 +24,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
-    AdmissionModule
+    MatTooltipModule
   ],
   declarations: [
     DashboardComponent
