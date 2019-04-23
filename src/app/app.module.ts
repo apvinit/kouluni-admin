@@ -14,6 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { environment } from 'environments/environment';
+import { NoticeModule } from './notice/notice.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { environment } from 'environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NoticeModule
   ],
   declarations: [AppComponent, AdminLayoutComponent],
   providers: [],
