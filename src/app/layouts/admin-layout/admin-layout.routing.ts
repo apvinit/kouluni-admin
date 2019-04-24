@@ -23,5 +23,9 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: 'timetable',
     loadChildren: '../../timetable/timetable.module#TimetableModule'
+  },
+  {
+    path: 'events',
+    loadChildren: '../../event/event.module#EventModule'
   }
 ];
