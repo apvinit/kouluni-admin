@@ -19,5 +19,9 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: 'attendance',
     loadChildren: '../../attendance/attendance.module#AttendanceModule'
+  },
+  {
+    path: 'timetable',
+    loadChildren: '../../timetable/timetable.module#TimetableModule'
   }
 ];
