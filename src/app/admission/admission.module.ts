@@ -5,11 +5,13 @@ import { AdmissionRoutingModule } from './admission-routing.module';
 import { AdmissionComponent } from './admission.component';
 import { StudentsListComponent } from './students-list/students-list.component';
 import { NewAdmissionComponent } from './new-admission/new-admission.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdmissionRoutingModule
+    AdmissionRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [AdmissionComponent, StudentsListComponent, NewAdmissionComponent]
 })
