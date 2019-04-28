@@ -14,7 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { environment } from 'environments/environment';
-import { MaterialModule } from './material.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { MaterialModule } from './material.module';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    MaterialModule
+    MatSidenavModule
   ],
   declarations: [AppComponent, AdminLayoutComponent],
   providers: [],
