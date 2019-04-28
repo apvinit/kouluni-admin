@@ -1,80 +1,96 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-title">Admission</h4>
-    <p class="card-category">Add a new student</p>
-  </div>
-  <div class="card-body">
+<mat-card>
+  <mat-card-title>Admission</mat-card-title>
+  <mat-card-subtitle>Add a new student</mat-card-subtitle>
+  <mat-card-content>
     <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
+      <mat-form-field>
         <input
+          matInput
           type="text"
           placeholder="Name"
           formControlName="name"
-          class="form-control"
           required
         />
-      </div>
-      <div class="form-group">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
         <input
+          matInput
           type="text"
           placeholder="Father's Name"
           formControlName="fathername"
-          class="form-control"
           required
         />
-      </div>
-      <div class="form-group">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
         <input
+          matInput
           type="text"
           placeholder="Mother's Name"
           formControlName="mothername"
-          class="form-control"
           required
         />
-      </div>
-      <div class="form-group">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
         <input
+          matInput
           type="date"
           placeholder="Date of Birth"
           formControlName="dob"
-          class="form-control"
           required
         />
-      </div>
-      <div class="form-group">
-        <select formControlName="class" class="form-control" required>
-          <option *ngFor="let class of classes" [value]="class.value">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Class</mat-label>
+        <mat-select formControlName="class" required>
+          <mat-option *ngFor="let class of classes" [value]="class.value">
             {{ class.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select class="form-control" required formControlName="section">
-          <option *ngFor="let section of sections" [value]="section.value">
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Section</mat-label>
+        <mat-select required formControlName="section">
+          <mat-option *ngFor="let section of sections" [value]="section.value">
             {{ section.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
         <input
-          type="text"
+          matInput
+          type="number"
           placeholder="Contact No."
           formControlName="contactNo"
-          class="form-control"
           required
         />
-      </div>
-      <div class="form-group">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
         <textarea
+          matInput
           type="text"
           placeholder="Address"
           formControlName="address"
-          class="form-control"
           required
         ></textarea>
-      </div>
-      <button class="btn btn-primary" [disabled]="!studentForm.valid" type="submit">Add</button>
-      <button class="btn">Cancel</button>
+      </mat-form-field>
+      <br />
+      <button
+        class="mr"
+        mat-raised-button
+        color="primary"
+        [disabled]="!studentForm.valid"
+        type="submit"
+      >
+        Add
+      </button>
+      <button mat-raised-button>Cancel</button>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
