@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   exports: [
     MatToolbarModule,
@@ -39,7 +41,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule {}
