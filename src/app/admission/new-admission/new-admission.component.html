@@ -2,7 +2,7 @@
   <mat-card-title>Admission</mat-card-title>
   <mat-card-subtitle>Add a new student</mat-card-subtitle>
   <mat-card-content>
-    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" #admissionForm="ngForm">
       <mat-form-field>
         <input
           matInput

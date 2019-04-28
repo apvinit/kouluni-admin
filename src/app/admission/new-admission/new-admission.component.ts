@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Student } from '../../model/student';
 import { FirebaseService } from 'app/api/firebase.service';
@@ -45,6 +45,8 @@ export class NewAdmissionComponent implements OnInit {
     address: new FormControl('')
   });
 
+  @ViewChild('admissionForm') admissionForm;
+
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {}
@@ -54,6 +56,7 @@ export class NewAdmissionComponent implements OnInit {
     this.firebaseService.addStudent(student).subscribe(value => {
       if (value === 'true') {
         this.studentForm.reset();
+        this.admissionForm.resetForm();
       }
     });
   }
