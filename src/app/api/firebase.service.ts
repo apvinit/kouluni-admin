@@ -6,6 +6,7 @@ import {
 import { Notice } from 'app/model/notice';
 import { Student } from 'app/model/student';
 import { Observable, of, Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,10 @@ export class FirebaseService {
   noticesCollection: AngularFirestoreCollection<Notice>;
   studentsCollection: AngularFirestoreCollection<Student>;
 
-  constructor(private firestoreRef: AngularFirestore) {
+  constructor(
+    private firestoreRef: AngularFirestore,
+    private snackBar: MatSnackBar
+  ) {
     this.noticesCollection = this.firestoreRef.collection<Notice>('notices');
     this.studentsCollection = this.firestoreRef.collection<Student>('students');
   }
@@ -35,9 +39,13 @@ export class FirebaseService {
       .set(student)
       .then(() => {
         created.next('true');
+        this.snackBar.open('Added Successfully');
       })
       .catch(() => {
         created.next('false');
+        this.snackBar.open('Error Adding Student', '', {
+          duration: 3000
+        });
       });
     return created;
   }
@@ -47,16 +55,36 @@ export class FirebaseService {
   }
 
   deleteStudent(studentId) {
-    return this.firestoreRef
+    this.firestoreRef
       .collection<Student>('students')
       .doc(studentId)
-      .delete();
+      .delete()
+      .then(() => {
+        this.snackBar.open('Delete Successful', '', {
+          duration: 3000
+        });
+      })
+      .catch(err => {
+        this.snackBar.open('Error Deleting Student', '', {
+          duration: 3000
+        });
+      });
   }
 
   updateStudent(student) {
-    return this.firestoreRef
+    this.firestoreRef
       .collection<Student>('students')
       .doc(student.id)
-      .update(student);
+      .update(student)
+      .then(() => {
+        this.snackBar.open('Update Successful', '', {
+          duration: 3000
+        });
+      })
+      .catch(err => {
+        this.snackBar.open('Error Updating Student', '', {
+          duration: 3000
+        });
+      });
   }
 }
