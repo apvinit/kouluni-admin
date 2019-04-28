@@ -19,16 +19,44 @@ export class FirebaseService {
     this.studentsCollection = this.firestoreRef.collection<Student>('students');
   }
 
+  // Admission
+
+  /**
+   * @param student
+   */
+
   addStudent(student: Student) {
     // persist student document with id
     const id = this.firestoreRef.createId();
     student.id = id;
     const created = new Subject();
-    this.studentsCollection.doc(id).set(student).then(() => {
-      created.next('true');
-    }).catch(() => {
-      created.next('false');
-    })
+    this.studentsCollection
+      .doc(id)
+      .set(student)
+      .then(() => {
+        created.next('true');
+      })
+      .catch(() => {
+        created.next('false');
+      });
     return created;
+  }
+
+  getStudents(): Observable<Student[]> {
+    return this.firestoreRef.collection<Student>('students').valueChanges();
+  }
+
+  deleteStudent(studentId) {
+    return this.firestoreRef
+      .collection<Student>('students')
+      .doc(studentId)
+      .delete();
+  }
+
+  updateStudent(student) {
+    return this.firestoreRef
+      .collection<Student>('students')
+      .doc(student.id)
+      .update(student);
   }
 }
