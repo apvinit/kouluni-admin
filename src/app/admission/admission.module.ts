@@ -6,12 +6,14 @@ import { AdmissionComponent } from './admission.component';
 import { StudentsListComponent } from './students-list/students-list.component';
 import { NewAdmissionComponent } from './new-admission/new-admission.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdmissionRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   declarations: [AdmissionComponent, StudentsListComponent, NewAdmissionComponent]
 })
