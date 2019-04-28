@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from 'app/api/firebase.service';
 import { Observable } from 'rxjs';
 import { Student } from 'app/model/student';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-students-list',
@@ -11,12 +13,19 @@ import { Student } from 'app/model/student';
 export class StudentsListComponent implements OnInit {
 
   students: Observable<Student[]>;
+  studentsDataSource: MatTableDataSource<Student>;
 
-  columnsToDisplay = ['name', 'fatherName', 'class', 'section', 'action']
+  columnsToDisplay = ['name', 'fatherName', 'class', 'section', 'action'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.students = this.firebaseService.getStudents();
+    this.students.subscribe((students) => {
+      this.studentsDataSource = new MatTableDataSource(students);
+      this.studentsDataSource.paginator = this.paginator;
+    } )
   }
 
   editStudent(studentId) {

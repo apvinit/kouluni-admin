@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Students</mat-card-title>
   <mat-card-content>
-    <table mat-table [dataSource]="students">
+    <table mat-table [dataSource]="studentsDataSource">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let student">{{ student.name }}</td>
@@ -37,5 +37,10 @@
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
     </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 30, 40]"
+      showFirstLastButtons
+    ></mat-paginator>
   </mat-card-content>
 </mat-card>
