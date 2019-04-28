@@ -1,53 +1,41 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-content">Students</h4>
-  </div>
-  <div class="card-body table-responsive table-full-width">
-    <table class="table table-striped">
-      <thead class="text-center">
-        <th>S.No</th>
-        <th>Name</th>
-        <th>Class</th>
-        <th>Section</th>
-      </thead>
-      <tbody class="text-center">
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Vinit</td>
-          <td>10</td>
-          <td>A</td>
-        </tr>
-      </tbody>
+<mat-card>
+  <mat-card-title>Students</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="students">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let student">{{ student.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fatherName">
+        <th mat-header-cell *matHeaderCellDef>Father Name</th>
+        <td mat-cell *matCellDef="let student">{{ student.fathername }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef>Class</th>
+        <td mat-cell *matCellDef="let student">{{ student.class }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="section">
+        <th mat-header-cell *matHeaderCellDef>Section</th>
+        <td mat-cell *matCellDef="let student">{{ student.section }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let student">
+          <button mat-icon-button (click)="editStudent(student.id)">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteStudent(student.id)">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
     </table>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
