@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Student } from '../../model/student';
 import { FirebaseService } from 'app/api/firebase.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-admission',
@@ -47,17 +48,51 @@ export class NewAdmissionComponent implements OnInit {
 
   @ViewChild('admissionForm') admissionForm;
 
-  constructor(private firebaseService: FirebaseService) {}
+  update = false;
+  studentId = '';
 
-  ngOnInit() {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.studentId = this.route.snapshot.paramMap.get('id');
+    if (this.studentId !== null) {
+      this.update = true;
+      this.firebaseService.getStudentById(this.studentId).subscribe(student => {
+        this.studentForm.setValue({
+          name: student.name,
+          fathername: student.fathername,
+          mothername: student.mothername,
+          dob: student.dob,
+          class: student.class,
+          section: student.section,
+          contactNo: student.contactNo,
+          address: student.address
+        });
+      });
+    }
+  }
 
   onSubmit() {
     const student: Student = this.studentForm.value;
-    this.firebaseService.addStudent(student).subscribe(value => {
-      if (value === 'true') {
-        this.studentForm.reset();
-        this.admissionForm.resetForm();
-      }
-    });
+    if (this.update) {
+      student.id = this.studentId;
+      this.firebaseService.updateStudent(student);
+      this.router.navigate(['../..'], { relativeTo: this.route})
+    } else {
+      this.firebaseService.addStudent(student).subscribe(value => {
+        if (value === 'true') {
+          this.resetForm();
+        }
+      });
+    }
+  }
+
+  resetForm() {
+    this.studentForm.reset();
+    this.admissionForm.resetForm();
   }
 }
