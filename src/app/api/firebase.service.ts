@@ -54,6 +54,10 @@ export class FirebaseService {
     return this.firestoreRef.collection<Student>('students').valueChanges();
   }
 
+  getStudentById(studentId): Observable<Student> {
+    return this.studentsCollection.doc<Student>(studentId).valueChanges();
+  }
+
   deleteStudent(studentId) {
     this.firestoreRef
       .collection<Student>('students')
