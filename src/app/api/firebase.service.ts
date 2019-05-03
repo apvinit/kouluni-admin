@@ -76,8 +76,7 @@ export class FirebaseService {
   }
 
   updateStudent(student) {
-    this.firestoreRef
-      .collection<Student>('students')
+    this.studentsCollection
       .doc(student.id)
       .update(student)
       .then(() => {
