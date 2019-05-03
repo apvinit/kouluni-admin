@@ -51,7 +51,7 @@ export class FirebaseService {
   }
 
   getStudents(): Observable<Student[]> {
-    return this.firestoreRef.collection<Student>('students').valueChanges();
+    return this.studentsCollection.valueChanges();
   }
 
   getStudentById(studentId): Observable<Student> {
