@@ -7,6 +7,7 @@ import { Notice } from 'app/model/notice';
 import { Student } from 'app/model/student';
 import { Observable, of, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Holiday } from 'app/model/holiday';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FirebaseService {
   noticesCollection: AngularFirestoreCollection<Notice>;
   studentsCollection: AngularFirestoreCollection<Student>;
+  holidaysCollection: AngularFirestoreCollection<Holiday>;
 
   constructor(
     private firestoreRef: AngularFirestore,
@@ -21,6 +23,7 @@ export class FirebaseService {
   ) {
     this.noticesCollection = this.firestoreRef.collection<Notice>('notices');
     this.studentsCollection = this.firestoreRef.collection<Student>('students');
+    this.holidaysCollection = this.firestoreRef.collection<Holiday>('holidays');
   }
 
   // Admission
@@ -38,14 +41,11 @@ export class FirebaseService {
       .doc(id)
       .set(student)
       .then(() => {
-        created.next('true');
-        this.snackBar.open('Added Successfully');
+        this.showSnackbar('Added Successfully');
       })
       .catch(() => {
         created.next('false');
-        this.snackBar.open('Error Adding Student', '', {
-          duration: 3000
-        });
+        this.showSnackbar('Error Adding Student');
       });
     return created;
   }
@@ -64,14 +64,10 @@ export class FirebaseService {
       .doc(studentId)
       .delete()
       .then(() => {
-        this.snackBar.open('Delete Successful', '', {
-          duration: 3000
-        });
+        this.showSnackbar('Delete Successful');
       })
       .catch(err => {
-        this.snackBar.open('Error Deleting Student', '', {
-          duration: 3000
-        });
+        this.showSnackbar('Error Deleting Student');
       });
   }
 
@@ -80,14 +76,21 @@ export class FirebaseService {
       .doc(student.id)
       .update(student)
       .then(() => {
-        this.snackBar.open('Update Successful', '', {
-          duration: 3000
-        });
+        this.showSnackbar('Update Successful');
       })
       .catch(err => {
-        this.snackBar.open('Error Updating Student', '', {
-          duration: 3000
-        });
+        this.showSnackbar('Error Updating Student');
       });
+  }
+
+  // Holidays
+
+
+
+  // utility functions
+  showSnackbar(message: string): void {
+    this.snackBar.open(message, '', {
+      duration: 3000
+    });
   }
 }
