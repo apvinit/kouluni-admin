@@ -1,6 +1,7 @@
 export interface Holiday {
   id?: string;
-  date: string;
   name: string;
+  date: string;
+  type?: string;
   description?: string;
 }
