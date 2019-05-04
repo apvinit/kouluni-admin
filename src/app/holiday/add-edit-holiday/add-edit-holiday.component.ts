@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FirebaseService } from 'app/api/firebase.service';
 
 @Component({
   selector: 'app-add-edit-holiday',
@@ -15,13 +16,20 @@ export class AddEditHolidayComponent implements OnInit {
   });
 
   @ViewChild('holidayFormTemplate') holidayFormTemplate;
-  constructor() { }
+
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    // todo for later
+    this.firebaseService.addHoliday(this.holidayForm.value);
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.holidayForm.reset();
+    this.holidayFormTemplate.resetForm();
   }
 
 }
