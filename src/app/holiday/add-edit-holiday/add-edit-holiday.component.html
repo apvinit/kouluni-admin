@@ -7,15 +7,32 @@
   >
     <mat-card-content>
       <mat-form-field>
-        <input matInput type="text" placeholder="Event Name" required />
+        <input
+          matInput
+          type="text"
+          placeholder="Event Name"
+          required
+          formControlName="name"
+        />
       </mat-form-field>
       <br />
       <mat-form-field>
-        <input matInput type="date" placeholder="Date" required />
+        <input
+          matInput
+          type="date"
+          placeholder="Date"
+          required
+          formControlName="date"
+        />
       </mat-form-field>
       <br />
       <mat-form-field>
-        <input matInput type="text" placeholder="Description" />
+        <input
+          matInput
+          type="text"
+          placeholder="Description"
+          formControlName="description"
+        />
       </mat-form-field>
       <br />
     </mat-card-content>
