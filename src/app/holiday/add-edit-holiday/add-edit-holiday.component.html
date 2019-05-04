@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title> <span>Add </span> <span>Edit</span> Holiday </mat-card-title>
+  <form
+    [formGroup]="holidayForm"
+    (ngSubmit)="onSubmit()"
+    #holidayFormTemplate="ngForm"
+  >
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Event Name" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="date" placeholder="Date" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Description" />
+      </mat-form-field>
+      <br />
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Add</button>
+      <button mat-raised-button type="reset">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
