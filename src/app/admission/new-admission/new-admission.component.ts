@@ -95,4 +95,9 @@ export class NewAdmissionComponent implements OnInit {
     this.studentForm.reset();
     this.admissionForm.resetForm();
   }
+
+
+  goToList() {
+    this.router.navigate(['/admission']);
+  }
 }
