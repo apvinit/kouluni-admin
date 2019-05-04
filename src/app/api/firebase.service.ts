@@ -85,7 +85,52 @@ export class FirebaseService {
 
   // Holidays
 
+  addHoliday(holiday: Holiday) {
+    // persist holiday document with id
+    const id = this.firestoreRef.createId();
+    holiday.id = id;
+    this.holidaysCollection
+      .doc(id)
+      .set(holiday)
+      .then(() => {
+        this.showSnackbar('Added Successfully');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Adding Holiday');
+      });
+  }
 
+  getHolidays(): Observable<Holiday[]> {
+    return this.holidaysCollection.valueChanges();
+  }
+
+  getHolidayById(holidayId: string): Observable<Holiday> {
+    return this.holidaysCollection.doc<Holiday>(holidayId).valueChanges();
+  }
+
+  deleteHoliday(holidayId: string) {
+    this.holidaysCollection
+      .doc(holidayId)
+      .delete()
+      .then(() => {
+        this.showSnackbar('Delete Successful');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Deleting Holiday');
+      });
+  }
+
+  updateHoliday(holiday: Holiday) {
+    this.holidaysCollection
+      .doc(holiday.id)
+      .update(holiday)
+      .then(() => {
+        this.showSnackbar('Update Successful');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Updating Holiday');
+      });
+  }
 
   // utility functions
   showSnackbar(message: string): void {
