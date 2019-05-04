@@ -27,5 +27,9 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: 'events',
     loadChildren: '../../event/event.module#EventModule'
+  },
+  {
+    path: 'holiday',
+    loadChildren: '../../holiday/holiday.module#HolidayModule'
   }
 ];
