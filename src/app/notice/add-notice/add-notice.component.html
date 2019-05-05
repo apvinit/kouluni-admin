@@ -1,34 +1,34 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-title">Notice</h4>
-    <p class="card-category">Add a new notice</p>
-  </div>
-  <div class="card-body">
-    <form>
-      <div class="form-group">
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Notice
+    </mat-card-title>
+    <mat-card-subtitle>
+      Add a new Notice
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="noticeForm" #noticeFormTemplate="ngForm">
+      <mat-form-field>
         <input
-          type="date"
-          class="form-control"
-          placeholder="Notice Description"
-        />
-      </div>
-      <div class="form-group">
-        <input
+          matInput
           type="text"
-          class="form-control"
-          placeholder="Notice Title"
-          required
+          placeholder="Title"
+          formControlName="title"
         />
-      </div>
-      <div class="form-group">
-        <input
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
           type="text"
-          class="form-control"
-          placeholder="Notice Description"
-        />
-      </div>
-      <button class="btn btn-primary">ADD</button>
-      <button class="btn">CANCEL</button>
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Add</button>
+        <button mat-raised-button>Cancel</button>
+      </mat-card-actions>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
