@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   links = [
-    { url: '', title: 'Home'},
+    // { url: '', title: 'Home'},
     { url: '/dashboard', title: 'Dashboard'},
     { url: '/admission', title: 'Admission'},
     { url: '/attendance', title: 'Attendance'},
     { url: '/timetable', title: 'Timetable'},
     { url: '/notice', title: 'Notice'},
-    { url: '/events', title: 'Events'},
+    // { url: '/events', title: 'Events'},
     { url: '/holiday', title: 'Holidays'},
   ];
 
