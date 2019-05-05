@@ -10,18 +10,19 @@
       Update the Notice
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <form
-      [formGroup]="noticeForm"
-      #noticeFormTemplate="ngForm"
-      (ngSubmit)="onSubmit()"
-    >
+  <form
+    [formGroup]="noticeForm"
+    #noticeFormTemplate="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-card-content>
       <mat-form-field>
         <input
           matInput
           type="text"
           placeholder="Title"
           formControlName="title"
+          required
         />
       </mat-form-field>
       <mat-form-field>
@@ -30,17 +31,18 @@
           type="text"
           placeholder="Description"
           formControlName="description"
+          required
         ></textarea>
       </mat-form-field>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit" *ngIf="!update">
-          Add
-        </button>
-        <button mat-raised-button color="primary" type="submit" *ngIf="update">
-          Update
-        </button>
-        <button mat-raised-button (click)="goToNotices()">Cancel</button>
-      </mat-card-actions>
-    </form>
-  </mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" *ngIf="!update" [disabled]="!noticeForm.valid">
+        Add
+      </button>
+      <button mat-raised-button color="primary" type="submit" *ngIf="update" [disabled]="!noticeForm.valid">
+        Update
+      </button>
+      <button mat-raised-button (click)="goToNotices()">Cancel</button>
+    </mat-card-actions>
+  </form>
 </mat-card>
