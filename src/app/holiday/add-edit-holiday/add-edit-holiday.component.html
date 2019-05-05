@@ -37,8 +37,9 @@
       <br />
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Add</button>
-      <button mat-raised-button type="reset">Cancel</button>
+      <button mat-raised-button color="primary" *ngIf="!update" type="submit">Add</button>
+      <button mat-raised-button color="primary" *ngIf="update" type="submit">Update</button>
+      <button mat-raised-button type="reset" (click)="goToHolidays()">Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card>
