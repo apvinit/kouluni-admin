@@ -1,98 +1,41 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-title">Add Attendance</h4>
-    <p class="card-category">Add attendance status of students</p>
-  </div>
-  <div class="card-body">
-    <div class="form-inline">
-      <div class="form-group">
-        <label class="mx-2">Date</label>
-        <input type="date" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label class="mx-2">Class</label>
-        <select name="" id="" class="form-control">
-          <option>Class 1</option>
-          <option>Class 2</option>
-          <option>Class 3</option>
-          <option>Class 4</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="mx-2">Section</label>
-        <select name="" id="" class="form-control">
-          <option>Section A</option>
-          <option>Section B</option>
-          <option>Section C</option>
-          <option>Section D</option>
-        </select>
-      </div>
-    </div>
-    <div class="table-responsive table-full-width">
-      <table class="table table-striped">
-        <thead>
-          <th>Roll No</th>
-          <th>Student Name</th>
-          <th>Status</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Vinit</td>
-            <td>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Present</label>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Absent</label>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Vinit</td>
-            <td>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Present</label>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Absent</label>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Vinit</td>
-            <td>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Present</label>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Absent</label>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Vinit</td>
-            <td>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Present</label>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Absent</label>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Vinit</td>
-            <td>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Present</label>
-              <input type="radio" name="status" id="" />
-              <label class="mx-2 text-dark" for="">Absent</label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <hr>
-    <div class="card-footer justify-content-end">
-      <button class="btn btn-primary">ADD</button>
-      <button class="btn">CANCEL</button>
-    </div>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add Attendance</mat-card-title>
+    <mat-card-subtitle>Add attendance status of students</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+  <form
+  [formGroup]="attendanceForm"
+    #attendanceFormTemplate="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput type="date" placeholder="Date" required />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Class</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let class of classes"
+            [value]="class.value"
+            required
+            >{{ class.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Section</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let section of sections"
+            [value]="section.value"
+            required
+            >{{ section.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary">GO</button>
+    </form>
+    </mat-card-content>
+</mat-card>
