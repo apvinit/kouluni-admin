@@ -3,12 +3,19 @@
     <mat-card-title>
       Notice
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!update">
       Add a new Notice
+    </mat-card-subtitle>
+    <mat-card-subtitle *ngIf="update">
+      Update the Notice
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="noticeForm" #noticeFormTemplate="ngForm">
+    <form
+      [formGroup]="noticeForm"
+      #noticeFormTemplate="ngForm"
+      (ngSubmit)="onSubmit()"
+    >
       <mat-form-field>
         <input
           matInput
@@ -26,8 +33,13 @@
         ></textarea>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button color="primary">Add</button>
-        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button color="primary" type="submit" *ngIf="!update">
+          Add
+        </button>
+        <button mat-raised-button color="primary" type="submit" *ngIf="update">
+          Update
+        </button>
+        <button mat-raised-button (click)="goToNotices()">Cancel</button>
       </mat-card-actions>
     </form>
   </mat-card-content>
