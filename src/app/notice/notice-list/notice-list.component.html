@@ -1,54 +1,40 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-title">All Notices</h4>
-    <p class="card-category">
-      List of Notices
-    </p>
-  </div>
-  <div class="card-body table-responsive table-full-width">
-    <table class="table table-striped">
-      <thead>
-        <th>Date</th>
-        <th>Notice</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-        <tr>
-          <td>2 Jun 2019</td>
-          <td>
-            Title of the Notice
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<mat-card>
+  <mat-card-title>Notices</mat-card-title>
+  <table mat-table [dataSource]="notices$">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let notice">{{ notice.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let notice">{{ notice.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let notice">
+        <button
+          mat-icon-button
+          matTooltip="Edit"
+          matTooltipPosition="before"
+          (click)="editNotice(notice.id)"
+        >
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          matTooltip="Delete"
+          matTooltipPosition="after"
+          (click)="deleteNotice(notice.id)"
+        >
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+</mat-card>
