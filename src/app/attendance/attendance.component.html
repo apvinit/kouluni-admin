@@ -1,12 +1,11 @@
 <div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <app-attendance-status></app-attendance-status>
-      </div>
-      <div class="col-md-6">
-        <app-add-attendance></app-add-attendance>
-      </div>
+    <div class="container-fluid">
+      <mat-toolbar>
+        <a mat-button color="primary" routerLink="./add">Add Attendance</a>
+        <a mat-button color="primary" routerLink="./status">Attendance Status</a>
+      </mat-toolbar>
+  
+      <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+  
