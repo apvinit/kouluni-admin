@@ -133,6 +133,56 @@ export class FirebaseService {
       });
   }
 
+  // Notices
+
+  addNotice(notice: Notice) {
+    // persist notice document with id
+    const id = this.firestoreRef.createId();
+    notice.id = id;
+    this.holidaysCollection
+      .doc(id)
+      .set(notice)
+      .then(() => {
+        this.showSnackbar('Added Successfully');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Adding Notice');
+      });
+  }
+
+  getNotices(): Observable<Notice[]> {
+    return this.noticesCollection.valueChanges();
+  }
+
+  getNoticeById(id: string): Observable<Notice> {
+    return this.noticesCollection.doc<Notice>(id).valueChanges();
+  }
+
+  deleteNotice(id: string) {
+    this.noticesCollection
+      .doc(id)
+      .delete()
+      .then(() => {
+        this.showSnackbar('Delete Successful');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Deleting Notice');
+      });
+  }
+
+  updateNotice(notice: Notice) {
+    this.noticesCollection
+      .doc(notice.id)
+      .update(notice)
+      .then(() => {
+        this.showSnackbar('Update Successful');
+      })
+      .catch(err => {
+        this.showSnackbar('Error Updating Notice');
+      });
+  }
+
+
   // utility functions
   showSnackbar(message: string): void {
     this.snackBar.open(message, '', {
