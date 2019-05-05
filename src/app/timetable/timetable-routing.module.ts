@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TimetableComponent } from './timetable.component';
+import { TimetableStatusComponent } from './timetable-status/timetable-status.component';
 
 const routes: Routes = [
   {
-    path: '', component: TimetableComponent
+    path: '',
+    component: TimetableComponent,
+    children: [
+      {
+        path: 'status',
+        component: TimetableStatusComponent
+      },
+      {
+        path: '',
+        redirectTo: 'status',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 
@@ -12,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TimetableRoutingModule { }
+export class TimetableRoutingModule {}
