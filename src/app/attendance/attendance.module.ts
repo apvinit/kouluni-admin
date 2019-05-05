@@ -15,6 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     ReactiveFormsModule
   ],
-  declarations: [AttendanceComponent, AttendanceStatusComponent, AddAttendanceComponent]
+  declarations: [
+    AttendanceComponent,
+    AttendanceStatusComponent,
+    AddAttendanceComponent
+  ]
 })
-export class AttendanceModule { }
+export class AttendanceModule {}
