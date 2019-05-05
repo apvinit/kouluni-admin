@@ -41,6 +41,7 @@ export class FirebaseService {
       .doc(id)
       .set(student)
       .then(() => {
+        created.next('true');
         this.showSnackbar('Added Successfully');
       })
       .catch(() => {
