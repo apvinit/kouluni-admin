@@ -139,7 +139,7 @@ export class FirebaseService {
     // persist notice document with id
     const id = this.firestoreRef.createId();
     notice.id = id;
-    this.holidaysCollection
+    this.noticesCollection
       .doc(id)
       .set(notice)
       .then(() => {
