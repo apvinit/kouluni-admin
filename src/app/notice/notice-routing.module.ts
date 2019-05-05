@@ -14,6 +14,10 @@ const routes: Routes = [
         component: AddNoticeComponent
       },
       {
+        path: 'edit/:id',
+        component: AddNoticeComponent
+      },
+      {
         path: 'list',
         component: NoticeListComponent
       },
