@@ -1,44 +1,34 @@
-<div class="card">
-  <div class="card-header card-header-primary">
-    <h4 class="card-title">Timetable</h4>
-    <p class="card-category">Timetable for class</p>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive table-full-width">
-      <table class="table table-striped">
-        <thead class="text-primary text-center">
-          <th>Period</th>
-          <th>Subject</th>
-          <th>Teacher</th>
-          <th>Time Interval</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Science</td>
-            <td>Rahul Singh</td>
-            <td>12:40 AM to 01:10 PM</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Science</td>
-            <td>Rahul Singh</td>
-            <td>12:40 AM to 01:10 PM</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Science</td>
-            <td>Rahul Singh</td>
-            <td>12:40 AM to 01:10 PM</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Science</td>
-            <td>Rahul Singh</td>
-            <td>12:40 AM to 01:10 PM</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<mat-card>
+  <mat-card-title>Timetable</mat-card-title>
+  <table mat-table [dataSource]="timetables">
+    
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef>Day</th>
+      <td mat-cell *matCellDef="let timetable">{{ timetable.day }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef>Start Time</th>
+      <td mat-cell *matCellDef="let timetable">{{ timetable.startTime }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef>End Time</th>
+      <td mat-cell *matCellDef="let timetable">{{ timetable.endTime }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef>Subject</th>
+      <td mat-cell *matCellDef="let timetable">{{ timetable.subject }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="teacher">
+      <th mat-header-cell *matHeaderCellDef>Teacher</th>
+      <td mat-cell *matCellDef="let timetable">{{ timetable.teacher }}</td>
+    </ng-container>
+
+    
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+</mat-card>
