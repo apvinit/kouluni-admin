@@ -1,3 +1,10 @@
 <mat-nav-list>
-  <a mat-list-item [routerLink]="link.url" *ngFor="let link of links"> {{ link.title }} </a>
+  <a
+    mat-list-item
+    [routerLink]="link.url"
+    routerLinkActive="router-link-active mat-elevation-z2"
+    *ngFor="let link of links"
+  >
+    {{ link.title }}
+  </a>
 </mat-nav-list>
